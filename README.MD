@@ -5,4 +5,4 @@ Must make a README.MD explaining:
  - How to get into development 
  - some other shits
 
-All `as \`${bigint}\`` casts are due to a bug in typings from discord.js
+All `as Snowflake` casts are due to a bug in typings from discord.js
