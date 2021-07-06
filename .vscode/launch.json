@@ -1,0 +1,44 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Compile & Debug",
+			"preLaunchTask": "npm: compile",   
+			"runtimeExecutable": "node",
+			"cwd": "${workspaceFolder}/build",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "app.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug",
+			"runtimeExecutable": "npx",
+			"args": [
+				"ts-node",
+				"app.ts"
+			],
+			"cwd": "${workspaceFolder}/src",
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug current file",
+			"runtimeExecutable": "npx",
+			"args": [
+				"ts-node",
+				"${file}"
+			],
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+		}
+	]
+}  
