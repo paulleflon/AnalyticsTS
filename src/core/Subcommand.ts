@@ -11,8 +11,8 @@ export default class Subcommand {
 	public run: (message: Message, args: string[], identifier: string) => void;
 	// The identifier argument is the string specified by the user when triggering the subcommand. Useful for a enable/disable subcommand for example.
 	/**
-	 * @param client The client
-	 * @param identifiers The strings usable to call this subcommand
+	 * @param identifier The possible names to use to call the subcommand
+	 * @param args The arguments of the subcommand
 	 * @param run The method to execute whenever this subcommand is called
 	 */
 	constructor(identifiers: string[], args: Argument[], run: (message: Message, args: string[], identifier: string) => void) {
