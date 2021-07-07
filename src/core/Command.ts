@@ -96,7 +96,7 @@ export default abstract class Command implements CommandInfo {
 				if (missing.length > 0) {
 					if (!this.silent) {
 						const embed = new ErrorResponse(`I need the ${missing.map(perm => `\`${this.client.formatPermision(perm)}\``).join(', ')} permission${missing.length > 1 ? 's' : ''} to run this command.`);
-						message.channel.send({embeds: [embed]});
+						message.channel.send({ embeds: [embed] });
 					}
 					return false;
 				}
@@ -107,7 +107,7 @@ export default abstract class Command implements CommandInfo {
 			const id: string = args.shift()!;
 			const sub: Subcommand | undefined = this.sub.get(id);
 			if (sub) {
-				await sub.run(this, message, args, id);
+				await sub.run.call(this, message, args, id);
 				return false;
 			}
 		}
