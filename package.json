@@ -24,6 +24,7 @@
 	"dependencies": {
 		"discord.js": "^13.0.0-dev.2e078e4.1625573006",
 		"dotenv": "^8.2.0",
+		"mongoose": "^5.13.2",
 		"pm2": "^5.1.0",
 		"run-script-os": "^1.1.4"
 	}
