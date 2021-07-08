@@ -1,11 +1,18 @@
 import { ColorResolvable, MessageEmbed } from 'discord.js';
 
+enum COLORS {
+	DEFAULT = '#a84cc7',
+	ERROR = '#cf3e30',
+	WARN = '#ffd438',
+	SUCCESS = '#2ecc71'
+}
+
 /** An extension of Discord MessageEmbeds for bot command responses */
 export class Response extends MessageEmbed {
-	public static DEFAULT_COLOR: ColorResolvable = '#a84cc7';
-	public static ERROR_COLOR: ColorResolvable = '#cf3e30';
-	public static WARN_COLOR: ColorResolvable = '#ffd438';
-	public static SUCCESS_COLOR: ColorResolvable = '#2ecc71';
+	/**
+	 * Generic colors for bot Responses
+	 */
+	public static COLORS = COLORS;
 
 	/**
 	 * @param message The response message
@@ -15,7 +22,7 @@ export class Response extends MessageEmbed {
 	constructor(message: string, color?: ColorResolvable, emoji?: string) {
 		super({
 			description: `${emoji ? emoji + ' ' : ''}${message}`,
-			color: color || Response.DEFAULT_COLOR
+			color: color || Response.COLORS.DEFAULT
 		});
 	}
 
@@ -37,7 +44,7 @@ export class ErrorResponse extends Response {
 	 * @param label The label above the error message
 	 */
 	constructor(message: string, error?: Error, label?: string) {
-		super(message, Response.ERROR_COLOR, '❌');
+		super(message, Response.COLORS.ERROR, '❌');
 		if (error)
 			this.setError(error, label);
 	}
@@ -49,7 +56,7 @@ export class SuccessResponse extends Response {
 	 * @param message The success message
 	 */
 	constructor(message: string) {
-		super(message, Response.SUCCESS_COLOR, '✅');
+		super(message, Response.COLORS.SUCCESS, '✅');
 	}
 }
 
@@ -59,6 +66,6 @@ export class WarnResponse extends Response {
 	 * @param message The warning message
 	 */
 	constructor(message: string) {
-		super(message, Response.SUCCESS_COLOR, '✅');
+		super(message, Response.COLORS.SUCCESS, '✅');
 	}
 }

@@ -31,7 +31,7 @@ export default class extends Command {
 		try {
 			let response: unknown = await eval(expression);
 			const embed: MessageEmbed = new MessageEmbed()
-				.setColor(Response.SUCCESS_COLOR)
+				.setColor(Response.COLORS.SUCCESS)
 				.setTitle('Sucessfully ran the expression')
 				.addField('Expression', `\`\`\`js\n${expression}\`\`\``);
 			if (typeof response === 'object') {
