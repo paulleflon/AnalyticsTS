@@ -1,11 +1,10 @@
-import { Collection, Message, PermissionString } from 'discord.js';
+import { Message, PermissionString } from 'discord.js';
 import CommandExample from '../models/CommandExample';
 import CommandInfo from '../models/CommandInfo';
 import Argument from './Argument';
 import BotClient from './BotClient';
 import Logger from './Logger';
 import { ErrorResponse } from './Response';
-import Subcommand from './Subcommand';
 
 /** A bot command */
 export default abstract class Command implements CommandInfo {
@@ -27,8 +26,6 @@ export default abstract class Command implements CommandInfo {
 	public readonly name: string;
 	public perms: PermissionString[];
 	public silent: boolean;
-	/** A collection containing the commands's subcommands */
-	public sub?: Collection<string, Subcommand>;
 
 	/** 
 	 * @param client The client the command belongs to
@@ -53,12 +50,6 @@ export default abstract class Command implements CommandInfo {
 		if (client.commands.findKey(cmd => cmd.name === this.name))
 			throw new Error('Command names must be unique within a single client');
 		this.log = new Logger(`Command-${this.name}`);
-		if (options.subcommands) {
-			this.sub = new Collection();
-			options.subcommands.forEach((cmd: Subcommand) =>
-				cmd.identifiers.forEach(id => this.sub?.set(id, cmd))
-			);
-		}
 	}
 
 	// TODO - Find a way to implement this as a decorator. 
@@ -69,7 +60,7 @@ export default abstract class Command implements CommandInfo {
 	 * @param message The message triggering the command
 	 * @param args The arguments given by the user. Useful for subcommand automatic run
 	 */
-	protected async preRun(message: Message, args?: string[]): Promise<boolean> {
+	protected async preRun(message: Message): Promise<boolean> {
 		if (!this.dm && message.channel.type === 'dm') {
 			message.channel.send('This command can\'t be run in DMs. Please use it in a server.');
 			return false;
@@ -102,16 +93,6 @@ export default abstract class Command implements CommandInfo {
 				}
 			}
 		}
-
-		if (args && args.length > 0 && this.sub) {
-			const id: string = args.shift()!;
-			const sub: Subcommand | undefined = this.sub.get(id);
-			if (sub) {
-				await sub.run.call(this, message, args, id);
-				return false;
-			}
-		}
-
 		return true;
 	}
 
