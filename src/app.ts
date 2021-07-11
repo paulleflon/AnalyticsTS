@@ -7,7 +7,7 @@ const client: BotClient = new BotClient({
 	owner: process.env.OWNER! as Snowflake,
 	prefix: process.env.GLOBAL_PREFIX!,
 	intents: Object.values(Intents.FLAGS), // Taking all intents for now. Should choose them later on
-	restTimeOffset: 0,
+	restTimeOffset: 10,
 	allowedMentions: { 
                 repliedUser: false,
                 parse: ["everyone"]
