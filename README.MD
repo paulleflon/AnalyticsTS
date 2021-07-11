@@ -1,8 +1,6 @@
 # Analytics
 
-Must make a README.MD explaining:
- - The purpose of the bot
- - How to get into development 
- - some other shits
+# **To contribute**
+**Please fork the repo and do changes to a specific branch. Then please open a Pull Request.**
 
-All `as Snowflake` casts are due to a bug in typings from discord.js
+**Do run eslint before pushing**
