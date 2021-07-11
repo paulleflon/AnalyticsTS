@@ -8,6 +8,10 @@ const client: BotClient = new BotClient({
 	prefix: process.env.GLOBAL_PREFIX!,
 	intents: Object.values(Intents.FLAGS), // Taking all intents for now. Should choose them later on
 	restTimeOffset: 0,
+	allowedMentions: { 
+                repliedUser: false,
+                parse: ["everyone"]
+	},
 	token: process.env.DISCORD_TOKEN!,
 	test: process.env.TEST === 'true'
 });
