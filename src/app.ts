@@ -10,7 +10,7 @@ const client: BotClient = new BotClient({
 	restTimeOffset: 10,
 	allowedMentions: { 
                 repliedUser: false,
-                parse: ["everyone"]
+                parse: ['everyone']
 	},
 	token: process.env.DISCORD_TOKEN!,
 	test: process.env.TEST === 'true'
