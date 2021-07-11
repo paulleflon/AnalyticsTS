@@ -17,22 +17,22 @@
 	],
 	"rules": {
 		"indent": [
-			"warn",
+			"error",
 			"tab",
 			{
 				"SwitchCase": 1
 			}
 		],
 		"linebreak-style": [
-			"warn",
+			"error",
 			"unix"
 		],
 		"quotes": [
-			"warn",
+			"error",
 			"single"
 		],
 		"semi": [
-			"warn",
+			"error",
 			"always"
 		],
 		"@typescript-eslint/no-explicit-any": [
