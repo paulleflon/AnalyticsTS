@@ -7,6 +7,7 @@
 		"compile": "run-script-os",
 		"compile:win32": "rmdir /S /Q build & tsc",
 		"compile:nix": "rm -rf build & tsc",
+		"lint": "eslint src",
 		"start": "npm compile && node build/app.js"
 	},
 	"author": "Hicka",
