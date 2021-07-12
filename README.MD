@@ -5,5 +5,5 @@
 
 **Do run eslint before pushing**
 
-# Ideas:
+# Ideas
 Add typescript.json file or I think it was called like that.
